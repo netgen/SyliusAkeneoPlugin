@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
 /**
- * @ORM\Entity(repositoryClass="Synolia\SyliusAkeneoPlugin\Repository\ProductConfigurationRepository")
+ * @ORM\MappedSuperclass(repositoryClass="Synolia\SyliusAkeneoPlugin\Repository\ProductConfigurationRepository")
  * @ORM\Table("akeneo_api_configuration_product")
  */
 class ProductConfiguration implements ResourceInterface
@@ -21,59 +21,59 @@ class ProductConfiguration implements ResourceInterface
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string|null
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $akeneoPriceAttribute;
+    protected $akeneoPriceAttribute;
 
     /**
      * @var string|null
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $akeneoEnabledChannelsAttribute;
+    protected $akeneoEnabledChannelsAttribute;
 
     /**
      * @var array|null
      * @ORM\Column(type="array", nullable=true)
      */
-    private $attributeMapping;
+    protected $attributeMapping;
 
     /**
      * @var bool|null
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $importMediaFiles;
+    protected $importMediaFiles;
 
     /**
      * @var Collection
      * @ORM\OneToMany(
-     *     targetEntity="ProductConfigurationAkeneoImageAttribute",
+     *     targetEntity="Synolia\SyliusAkeneoPlugin\Entity\ProductConfigurationAkeneoImageAttribute",
      *     mappedBy="productConfiguration",
      *     orphanRemoval=true,
      *     cascade={"persist"}
      * )
      */
-    private $akeneoImageAttributes;
+    protected $akeneoImageAttributes;
 
     /**
      * @var Collection
      * @ORM\OneToMany(
-     *     targetEntity="ProductConfigurationImageMapping",
+     *     targetEntity="Synolia\SyliusAkeneoPlugin\Entity\ProductConfigurationImageMapping",
      *     mappedBy="productConfiguration",
      *     orphanRemoval=true,
      *     cascade={"persist"}
      * )
      */
-    private $productImagesMapping;
+    protected $productImagesMapping;
 
     /**
      * @var bool|null
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $regenerateUrlRewrites;
+    protected $regenerateUrlRewrites;
 
     public function __construct()
     {

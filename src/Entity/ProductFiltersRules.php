@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
 /**
- * @ORM\Entity(repositoryClass="Synolia\SyliusAkeneoPlugin\Repository\ProductFiltersRulesRepository")
+ * @ORM\MappedSuperclass(repositoryClass="Synolia\SyliusAkeneoPlugin\Repository\ProductFiltersRulesRepository")
  * @ORM\Table("akeneo_api_product_filters_rules")
  */
 class ProductFiltersRules implements ResourceInterface
@@ -19,80 +19,80 @@ class ProductFiltersRules implements ResourceInterface
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=255)
      */
-    private $mode;
+    protected $mode;
 
     /**
      * @var string|null
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $advancedFilter;
+    protected $advancedFilter;
 
     /**
      * @var string|null
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $completenessType;
+    protected $completenessType;
 
     /**
      * @var array
      * @ORM\Column(type="array")
      */
-    private $locales = [];
+    protected $locales = [];
 
     /**
      * @var int
      * @ORM\Column(type="integer")
      */
-    private $completenessValue;
+    protected $completenessValue;
 
     /**
      * @var string|null
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $status;
+    protected $status;
 
     /**
      * @var string|null
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $updatedMode;
+    protected $updatedMode;
 
     /**
      * @var \DateTimeInterface
      * @ORM\Column(type="datetime")
      */
-    private $updatedBefore;
+    protected $updatedBefore;
 
     /**
      * @var \DateTimeInterface
      *
      * @ORM\Column(type="datetime")
      */
-    private $updatedAfter;
+    protected $updatedAfter;
 
     /**
      * @var int|null
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $updated;
+    protected $updated;
 
     /**
      * @var array
      * @ORM\Column(type="array")
      */
-    private $excludeFamilies = [];
+    protected $excludeFamilies = [];
 
     /**
      * @var string
      * @ORM\Column(type="string")
      */
-    private $channel = '';
+    protected $channel = '';
 
     public function __construct()
     {
