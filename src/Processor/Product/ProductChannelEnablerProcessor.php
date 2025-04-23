@@ -69,7 +69,7 @@ final class ProductChannelEnablerProcessor implements ProductChannelEnablerProce
         }
     }
 
-    private function getEnabledChannelsAttributeData(ProductInterface $product, array $resource): array
+    public function getEnabledChannelsAttributeData(ProductInterface $product, array $resource): array
     {
         $productConfiguration = $this->productConfigurationRepository->findOneBy([]);
 
