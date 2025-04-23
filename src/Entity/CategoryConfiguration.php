@@ -10,11 +10,11 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 use Synolia\SyliusAkeneoPlugin\Repository\CategoryConfigurationRepository;
 
 /**
- * @ORM\Entity(repositoryClass="Synolia\SyliusAkeneoPlugin\Repository\CategoryConfigurationRepository")
+ * @ORM\MappedSuperclass(repositoryClass="Synolia\SyliusAkeneoPlugin\Repository\CategoryConfigurationRepository")
  *
  * @ORM\Table("akeneo_api_configuration_categories")
  */
-#[ORM\Entity(repositoryClass: CategoryConfigurationRepository::class)]
+#[ORM\MappedSuperclass(repositoryClass: CategoryConfigurationRepository::class)]
 #[ORM\Table(name: 'akeneo_api_configuration_categories')]
 class CategoryConfiguration implements ResourceInterface
 {
@@ -30,7 +30,7 @@ class CategoryConfiguration implements ResourceInterface
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'AUTO')]
     #[ORM\Column(type: Types::INTEGER)]
-    private $id;
+    protected $id;
 
     /**
      * @var array<string>
@@ -38,7 +38,7 @@ class CategoryConfiguration implements ResourceInterface
      * @ORM\Column(type="array")
      */
     #[ORM\Column(type: Types::ARRAY)]
-    private array $notImportCategories = [];
+    protected array $notImportCategories = [];
 
     /**
      * @var array<string>
@@ -46,11 +46,11 @@ class CategoryConfiguration implements ResourceInterface
      * @ORM\Column(type="array")
      */
     #[ORM\Column(type: Types::ARRAY)]
-    private array $rootCategories = [];
+    protected array $rootCategories = [];
 
     /** @ORM\Column(type="boolean") */
     #[ORM\Column(type: Types::BOOLEAN)]
-    private bool $useAkeneoPositions = false;
+    protected bool $useAkeneoPositions = false;
 
     public function getId(): int
     {
