@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
 /**
- * @ORM\Entity(repositoryClass="CategoryConfigurationRepository")
+ * @ORM\MappedSuperclass(repositoryClass="CategoryConfigurationRepository")
  *
  * @ORM\Table("akeneo_api_configuration_categories")
  */
@@ -20,19 +20,19 @@ class CategoryConfiguration implements ResourceInterface
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var array<string>
      * @ORM\Column(type="array")
      */
-    private $notImportCategories = [];
+    protected $notImportCategories = [];
 
     /**
      * @var array<string>
      * @ORM\Column(type="array")
      */
-    private $rootCategories = [];
+    protected $rootCategories = [];
 
     public function getId(): int
     {
