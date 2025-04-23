@@ -10,11 +10,11 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 use Synolia\SyliusAkeneoPlugin\Repository\CategoryConfigurationRepository;
 
 /**
- * @ORM\Entity(repositoryClass="CategoryConfigurationRepository")
+ * @ORM\MappedSuperclass(repositoryClass="CategoryConfigurationRepository")
  *
  * @ORM\Table("akeneo_api_configuration_categories")
  */
-#[ORM\Entity(repositoryClass: CategoryConfigurationRepository::class)]
+#[ORM\MappedSuperclass(repositoryClass: CategoryConfigurationRepository::class)]
 #[ORM\Table(name: 'akeneo_api_configuration_categories')]
 class CategoryConfiguration implements ResourceInterface
 {
@@ -30,7 +30,7 @@ class CategoryConfiguration implements ResourceInterface
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'AUTO')]
     #[ORM\Column(type: Types::INTEGER)]
-    private $id;
+    protected $id;
 
     /**
      * @var array<string>
@@ -38,7 +38,7 @@ class CategoryConfiguration implements ResourceInterface
      * @ORM\Column(type="array")
      */
     #[ORM\Column(type: Types::ARRAY)]
-    private array $notImportCategories = [];
+    protected array $notImportCategories = [];
 
     /**
      * @var array<string>
@@ -46,7 +46,7 @@ class CategoryConfiguration implements ResourceInterface
      * @ORM\Column(type="array")
      */
     #[ORM\Column(type: Types::ARRAY)]
-    private array $rootCategories = [];
+    protected array $rootCategories = [];
 
     public function getId(): int
     {
